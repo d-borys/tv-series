@@ -3,9 +3,9 @@ import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {Series} from '../model/series';
 import {AppState} from '../core/reducers/app.reducer';
-import {selectMoviesForDate} from './store/series.selectors';
+import {selectSeriesByFilter, selectSeriesGenres} from './store/series.selectors';
 import {tap} from 'rxjs/operators';
-import {changeCurrentFilterDate} from './store/series.actions';
+import {changeCurrentFilterDate, changeGenreFilter} from './store/series.actions';
 import {DatePipe} from '@angular/common';
 import {Router} from '@angular/router';
 
@@ -17,6 +17,8 @@ import {Router} from '@angular/router';
 export class SeriesComponent implements OnInit {
   series$: Observable<Series[]>;
   dateFilter: any;
+  genres$: Observable<string[]>;
+  chip: string;
 
   constructor(
     private store: Store<AppState>,
@@ -28,6 +30,7 @@ export class SeriesComponent implements OnInit {
   ngOnInit(): void {
     this.dateFilter = new Date();
     this.getFilteredSeries();
+    this.genres$ = this.store.select(selectSeriesGenres).pipe(tap(console.log));
   }
 
   onDateChange(): void {
@@ -41,7 +44,12 @@ export class SeriesComponent implements OnInit {
   getFilteredSeries(): void {
     const formattedDate = this.datePipe.transform(this.dateFilter, 'yyyy-MM-dd');
     this.store.dispatch(changeCurrentFilterDate({date: formattedDate}));
-    this.series$ = this.store.select(selectMoviesForDate).pipe(tap(console.log));
+    this.series$ = this.store.select(selectSeriesByFilter).pipe(tap(console.log));
+  }
+
+  onChipClick(genre: string): void {
+    this.chip = this.chip === genre ? null : genre;
+    this.store.dispatch(changeGenreFilter({genre: this.chip}));
   }
 
 }

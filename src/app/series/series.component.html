@@ -6,6 +6,9 @@
       <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
       <mat-datepicker #picker ></mat-datepicker>
     </mat-form-field>
+    <mat-chip-list aria-label="Genres" selectable>
+      <mat-chip *ngFor="let genre of genres$ | async" color="accent" [selected]="chip === genre" class="chip" [value]="genre" (click)="onChipClick(genre)">{{genre}}</mat-chip>
+    </mat-chip-list>
   </div>
   <div class="wrapper__content">
   <app-series-card *ngFor="let show of series$ | async" [series]="show" (detailsClicked)="onDetailsClicked($event)"></app-series-card>

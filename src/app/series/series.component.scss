@@ -6,7 +6,9 @@
 
   &__header {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding: 10px;
   }
   &__content {
@@ -15,4 +17,8 @@
     flex-wrap: wrap;
     justify-content: center;
   }
+}
+
+.chip {
+  cursor: pointer;
 }

@@ -4,7 +4,7 @@ import {Show} from '../../model/show';
 
 
 export const fetchSeries = createAction(
-  '[Series Resolver] Fetch Series',
+  '[Series Effect] Fetch Series',
   props<{ currentDate: string }>()
 );
 
@@ -41,6 +41,11 @@ export const changeCurrentFilterDate = createAction(
 export const addNewFilterDate = createAction(
   '[Series Effect] Add New Filter Date',
   props<{ date: string }>()
+);
+
+export const changeGenreFilter = createAction(
+  '[Series Component] Change Filter Genre',
+  props<{genre: string}>()
 );
 
 

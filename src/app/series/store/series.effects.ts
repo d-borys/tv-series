@@ -37,7 +37,10 @@ export class SeriesEffects {
             addNewFilterDate({date: currentDate})
           ];
         }),
-        catchError(error => of(fetchSeriesFailed({message: 'Something went wrong'})))
+        catchError(error => {
+          console.log(error);
+          return of(fetchSeriesFailed({message: 'Something went wrong'}))
+        })
       );
     })
   ));

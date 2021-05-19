@@ -18,19 +18,19 @@ export class SeriesService {
   private filter(item: any): Series {
     const show = item._embedded.show;
     return {
-      id: item.id,
-      airdate: item.airdate,
-      airstamp: item.airstamp,
-      airtime: item.airtime,
-      name: item.name,
-      season: item.season,
-      summary: show.summary,
+      id: item?.id,
+      airdate: item?.airdate,
+      airstamp: item?.airstamp,
+      airtime: item?.airtime,
+      name: item?.name,
+      season: item?.season,
+      summary: show?.summary,
       show: {
-        image: show.image.medium,
-        genre: show.genre,
-        id: show.id,
-        name: show.name,
-        summary: show.summary,
+        image: show?.image?.medium,
+        genres: show?.genres,
+        id: show?.id,
+        name: show?.name,
+        summary: show?.summary,
       }
     };
   }

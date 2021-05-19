@@ -1,5 +1,5 @@
 import {Action, createReducer, on} from '@ngrx/store';
-import {addNewFilterDate, changeCurrentFilterDate, fetchSeriesSuccess, fetchShowSuccess} from './series.actions';
+import {addNewFilterDate, changeCurrentFilterDate, changeGenreFilter, fetchSeriesSuccess} from './series.actions';
 import {Series} from '../../model/series';
 
 export const seriesFeatureKey = 'tv-series';
@@ -8,12 +8,14 @@ export interface SeriesState {
   series: Series[];
   filteredDates: string[];
   currentFilterDate: string;
+  currentGenre: string;
 }
 
 const initialAppState: SeriesState = {
   series: [],
   filteredDates: [],
-  currentFilterDate: undefined
+  currentFilterDate: undefined,
+  currentGenre: undefined
 };
 
 const reducer = createReducer(initialAppState,
@@ -34,6 +36,12 @@ const reducer = createReducer(initialAppState,
       ...state,
       filteredDates: [...state.filteredDates, date],
     }
+  }),
+  on(changeGenreFilter, (state, {genre}) => {
+    return {
+      ...state,
+      currentGenre: genre
+    };
   })
 );
 

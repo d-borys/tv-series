@@ -23,9 +23,35 @@ export const selectWasDateAlreadySearched = createSelector(
   (state) => state.filteredDates.findIndex(item => item === state.currentFilterDate) > -1
 );
 
-export const selectMoviesForDate = createSelector(
+export const selectSeriesForDate = createSelector(
   selectAllSeries,
   selectCurrentFilterDate,
-  (series, currentFilterDate) => series.filter(show => show.airdate === currentFilterDate)
+  (series, currentFilterDate) => {
+    return series.filter(show => show.airdate === currentFilterDate);
+  }
 );
+
+export const selectGenreFilter = createSelector(
+  seriesState,
+  (state) => state.currentGenre
+);
+
+export const selectSeriesByFilter = createSelector(
+  selectSeriesForDate,
+  selectGenreFilter,
+  (series, genre) => genre ? series.filter(item => item.show.genres.indexOf(genre) > -1) : series
+);
+
+
+export const selectSeriesGenres = createSelector(
+  selectSeriesForDate,
+  (series) => {
+    const genres = series
+      .map(item => item.show.genres)
+      .reduce((a, b) => [...a, ...b], []);
+    return [...new Set(genres)];
+  }
+);
+
+
 

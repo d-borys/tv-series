@@ -7,6 +7,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
 
+
+import {MatChipsModule} from '@angular/material/chips';
+
 @NgModule({
   declarations: [
     SafePipe
@@ -17,7 +20,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatChipsModule
   ],
   exports: [
     SafePipe,
@@ -25,7 +29,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatButtonModule,
     MatDatepickerModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatChipsModule
   ]
 })
 
