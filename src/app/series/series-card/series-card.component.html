@@ -1,0 +1,16 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>{{series?.name}}</mat-card-title>
+    <mat-card-subtitle>Season: {{series?.season}}</mat-card-subtitle>
+    <mat-card-subtitle>Air time: {{series?.airtime}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="series?.show?.image" [alt]="series?.name">
+  <mat-card-content>
+    <p>
+      {{series?.show?.summary}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="onDetails()">Details</button>
+  </mat-card-actions>
+</mat-card>
