@@ -1,16 +1,16 @@
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
-import {AppState} from '../../core/reducers/app.reducer';
 import {Injectable} from '@angular/core';
 import {tap} from 'rxjs/operators';
-import {Show} from '../../model/show';
-import {fetchShowSuccess} from '../store/series.actions';
-import {SeriesService} from '../../core/services/series.service';
+import {SeriesService} from '../../../core/services/series.service';
+import {Show} from '../../../model/show';
+import {fetchShowSuccess} from '../../store/series.actions';
+import {AppState} from '../../../core/reducers/app.reducer';
 
 
 @Injectable()
-export class SeriesDetailsResolver implements Resolve<Show> {
+export class ShowResolver implements Resolve<Show> {
   constructor(
     private store: Store<AppState>,
     private seriesService: SeriesService

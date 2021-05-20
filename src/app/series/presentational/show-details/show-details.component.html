@@ -1,4 +1,4 @@
-<div class="show flex flex-vertical" *ngIf="(show$ | async) as show">
+<div class="show flex flex-vertical">
   <div class="show__header flex">
     <img class="show__image" [src]="show?.image"/>
     <div class="show__info flex flex-vertical">
@@ -30,8 +30,5 @@
         <strong>Premiered: </strong>{{show?.premiered}}
       </p>
     </div>
-  </div>
-  <div class="button__bar">
-    <button type="button" mat-raised-button color="primary" (click)="onReturn()">Return</button>
   </div>
 </div>

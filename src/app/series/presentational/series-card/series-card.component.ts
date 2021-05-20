@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
-import {Series} from '../../model/series';
+import {Series} from '../../../model/series';
 
 @Component({
   selector: 'app-series-card',

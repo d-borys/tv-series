@@ -46,7 +46,6 @@ export class SeriesEffects {
           ];
         }),
         catchError(error => {
-          console.log(error);
           return of(fetchSeriesFailed({message: 'Something went wrong'}))
         })
       );
@@ -59,7 +58,6 @@ export class SeriesEffects {
       return this.seriesService.fetchShowById(id).pipe(
         map((show) => fetchShowSuccess({show})),
         catchError(error => {
-          console.log(error);
           return of(fetchShowFailed({message: 'Something went wrong'}));
         })
       );

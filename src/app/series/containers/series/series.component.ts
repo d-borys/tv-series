@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {Series} from '../model/series';
-import {AppState} from '../core/reducers/app.reducer';
-import {selectSeriesByFilter, selectSeriesGenres} from './store/series.selectors';
-import {changeCurrentFilterDate, changeGenreFilter} from './store/series.actions';
+import {Series} from '../../../model/series';
+import {AppState} from '../../../core/reducers/app.reducer';
+import {selectSeriesByFilter, selectSeriesGenres} from '../../store/series.selectors';
+import {changeCurrentFilterDate, changeGenreFilter} from '../../store/series.actions';
 import {DatePipe} from '@angular/common';
 import {Router} from '@angular/router';
 

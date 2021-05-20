@@ -1,8 +1,9 @@
 import {RouterModule, Routes} from '@angular/router';
-import {SeriesComponent} from './series/series.component';
 import {NgModule} from '@angular/core';
-import {SeriesDetailsComponent} from './series/series-details/series-details.component';
-import {SeriesDetailsResolver} from './series/series-details/series-details.resolver';
+import {SeriesComponent} from './series/containers/series/series.component';
+import {ShowDetailsComponent} from './series/presentational/show-details/show-details.component';
+import {ShowResolver} from './series/containers/show/show.resolver';
+import {ShowComponent} from './series/containers/show/show.component';
 
 const routes: Routes = [
   {
@@ -12,9 +13,9 @@ const routes: Routes = [
   },
   {
     path: 'details/:id',
-    component: SeriesDetailsComponent,
+    component: ShowComponent,
     resolve: {
-      series: SeriesDetailsResolver
+      series: ShowResolver
     }
   }
 ];
