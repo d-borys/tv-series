@@ -28,6 +28,11 @@ export const fetchShowSuccess = createAction(
   props<{ show: Show }>()
 );
 
+export const fetchShowSuccessResolver = createAction(
+  '[Show Resolver] Fetch Show Success',
+  props<{ show: Show }>()
+);
+
 export const fetchShowFailed = createAction(
   '[Series Effect] Fetch Show Failed',
   props<{ message: string }>()

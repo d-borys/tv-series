@@ -1,5 +1,12 @@
 import {Action, createReducer, on} from '@ngrx/store';
-import {addNewFilterDate, changeCurrentFilterDate, changeGenreFilter, fetchSeriesSuccess, fetchShowSuccess} from './series.actions';
+import {
+  addNewFilterDate,
+  changeCurrentFilterDate,
+  changeGenreFilter,
+  fetchSeriesSuccess,
+  fetchShowSuccess,
+  fetchShowSuccessResolver
+} from './series.actions';
 import {Series} from '../../model/series';
 import {Show} from '../../model/show';
 
@@ -47,7 +54,8 @@ const reducer = createReducer(initialAppState,
       currentGenre: genre
     };
   }),
-  on(fetchShowSuccess, (state, {show}) => {
+  on(fetchShowSuccess,
+    fetchShowSuccessResolver, (state, {show}) => {
     return {
       ...state,
       show

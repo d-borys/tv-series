@@ -8,11 +8,6 @@ export const selectAllSeries = createSelector(
   (state) => state.series
 );
 
-export const selectSeriesShowById = (id) => createSelector(
-  selectAllSeries,
-  (series) => series.find(item => item.show.id === id)
-);
-
 export const selectCurrentShow = createSelector(
   seriesState,
   (state) => state.show
