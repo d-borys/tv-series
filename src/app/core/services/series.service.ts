@@ -26,12 +26,24 @@ export class SeriesService {
       season: item?.season,
       summary: show?.summary,
       show: {
-        image: show?.image?.medium,
-        genres: show?.genres,
-        id: show?.id,
-        name: show?.name,
-        summary: show?.summary,
+        ...this.mapShow(show)
       }
+    };
+  }
+
+  private mapShow(item: any): Show {
+    return {
+      id: item?.id,
+      image: item?.image?.medium,
+      genres: item?.genres,
+      summary: item?.summary,
+      runtime: item?.runtime,
+      name: item?.name,
+      rating: item?.rating.average,
+      premiered: item?.premiered,
+      type: item?.type,
+      airdays: item?.schedule?.days,
+      airtime: item?.schedule?.time
     };
   }
 
@@ -46,10 +58,10 @@ export class SeriesService {
     );
   }
 
-  fetchShowById(id): Observable<Show> {
+  fetchShowById(id: number): Observable<Show> {
     const url = `${this.api}/shows/${id}`;
-    return this.http.get<Series>(url).pipe(
-      tap(console.log)
+    return this.http.get<Show>(url).pipe(
+      map(item => this.mapShow(item))
     );
   }
 }

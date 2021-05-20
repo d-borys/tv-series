@@ -1,0 +1,46 @@
+.show {
+  padding: 50px;
+  background-color: var(--white);
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, .3);
+  border-radius: 5px;
+
+
+  &__info,
+  &__rating,
+  &__description,
+  &__type,
+  &__title {
+    padding: 10px;
+  }
+
+  &__genres {
+    margin-top: auto;
+  }
+
+  &__details {
+    margin-top: 50px;
+
+    & > h1 {
+      font-size: 40px;
+      font-weight: bold;
+    }
+  }
+
+  &__details__content {
+    padding: 10px;
+    margin-left: 20px;
+    font-size: 18px;
+    max-width: 40%;
+  }
+
+  &__airday {
+    padding: 0 5px;
+    display: flex;
+  }
+}

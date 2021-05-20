@@ -1,6 +1,14 @@
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {Injectable} from '@angular/core';
-import {addNewFilterDate, changeCurrentFilterDate, fetchSeries, fetchSeriesFailed, fetchSeriesSuccess} from './series.actions';
+import {
+  addNewFilterDate,
+  changeCurrentFilterDate,
+  fetchSeries,
+  fetchSeriesFailed,
+  fetchSeriesSuccess,
+  fetchShow, fetchShowFailed,
+  fetchShowSuccess
+} from './series.actions';
 import {catchError, concatMap, filter, map, switchMap, withLatestFrom} from 'rxjs/operators';
 
 import {of} from 'rxjs';
@@ -45,13 +53,16 @@ export class SeriesEffects {
     })
   ));
 
-  // loadShow$ = createEffect(() => this.actions$.pipe(
-  //   ofType(fetchShow),
-  //   switchMap(({id}) => {
-  //     return this.seriesService.fetchShowById({id}).pipe(
-  //       map((show) => fetchShowSuccess({show})),
-  //       catchError(error => of(fetchShowFailed({message: 'Something went wrong'})))
-  //     );
-  //   })
-  // ));
+  loadShow$ = createEffect(() => this.actions$.pipe(
+    ofType(fetchShow),
+    switchMap(({id}) => {
+      return this.seriesService.fetchShowById(id).pipe(
+        map((show) => fetchShowSuccess({show})),
+        catchError(error => {
+          console.log(error);
+          return of(fetchShowFailed({message: 'Something went wrong'}));
+        })
+      );
+    })
+  ));
 }

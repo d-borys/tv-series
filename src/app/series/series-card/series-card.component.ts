@@ -1,10 +1,11 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
 import {Series} from '../../model/series';
 
 @Component({
   selector: 'app-series-card',
   templateUrl: './series-card.component.html',
-  styleUrls: ['./series-card.component.scss']
+  styleUrls: ['./series-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SeriesCardComponent implements OnInit {
   @Input() series: Series;

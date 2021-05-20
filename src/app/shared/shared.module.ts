@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-import {SafePipe} from './directives/safe.pipe';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -9,10 +8,12 @@ import {MatNativeDateModule} from '@angular/material/core';
 
 
 import {MatChipsModule} from '@angular/material/chips';
+import {ChipsComponent} from './components/chips/chips.component';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
   declarations: [
-    SafePipe
+    ChipsComponent
   ],
   imports: [
     MatCardModule,
@@ -21,16 +22,17 @@ import {MatChipsModule} from '@angular/material/chips';
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
-    MatChipsModule
+    MatChipsModule,
+    CommonModule
   ],
   exports: [
-    SafePipe,
     MatCardModule,
     MatButtonModule,
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatChipsModule
+    MatChipsModule,
+    ChipsComponent
   ]
 })
 

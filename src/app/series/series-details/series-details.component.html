@@ -1,8 +1,37 @@
-<div class="details">
-  <div class="details__header">
-    <div class="details__title"></div>
+<div class="show flex flex-vertical" *ngIf="(show$ | async) as show">
+  <div class="show__header flex">
+    <img class="show__image" [src]="show?.image"/>
+    <div class="show__info flex flex-vertical">
+      <h2 class="show__title">{{show?.name}}</h2>
+      <div class="show__rating"><strong>Rating: </strong>{{show?.rating ? show?.rating : 0}}/10</div>
+      <div class="show__type"><strong>Type:</strong> {{show?.type}}</div>
+      <span class="show__description" [innerHTML]="show?.summary"></span>
+      <div class="show__genres">
+        <app-chips [genres]="show?.genres" [selectable]="false"></app-chips>
+      </div>
+    </div>
   </div>
-  <div class="details__content">
-
+  <div class="show__details flex flex-vertical">
+    <h1>Details</h1>
+    <div class="show__details__content">
+      <div class="show__airdays flex">
+        <p>
+          <strong>Air days: </strong>
+        </p>
+        <p class="show__airday" *ngFor="let day of show?.airdays">{{day}}</p>
+      </div>
+      <p class="show__airtime">
+        <strong>Air time: </strong>{{show?.airtime}}
+      </p>
+      <p class="show__runtime">
+        <strong>Duration: </strong>{{show?.runtime}}
+      </p>
+      <p class="show__premier">
+        <strong>Premiered: </strong>{{show?.premiered}}
+      </p>
+    </div>
+  </div>
+  <div class="button__bar">
+    <button type="button" mat-raised-button color="primary" (click)="onReturn()">Return</button>
   </div>
 </div>

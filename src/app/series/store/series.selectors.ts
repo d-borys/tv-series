@@ -13,6 +13,11 @@ export const selectSeriesShowById = (id) => createSelector(
   (series) => series.find(item => item.show.id === id)
 );
 
+export const selectCurrentShow = createSelector(
+  seriesState,
+  (state) => state.show
+);
+
 export const selectCurrentFilterDate = createSelector(
   seriesState,
   (state) => state.currentFilterDate

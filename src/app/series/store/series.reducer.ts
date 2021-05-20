@@ -1,6 +1,7 @@
 import {Action, createReducer, on} from '@ngrx/store';
-import {addNewFilterDate, changeCurrentFilterDate, changeGenreFilter, fetchSeriesSuccess} from './series.actions';
+import {addNewFilterDate, changeCurrentFilterDate, changeGenreFilter, fetchSeriesSuccess, fetchShowSuccess} from './series.actions';
 import {Series} from '../../model/series';
+import {Show} from '../../model/show';
 
 export const seriesFeatureKey = 'tv-series';
 
@@ -9,13 +10,15 @@ export interface SeriesState {
   filteredDates: string[];
   currentFilterDate: string;
   currentGenre: string;
+  show: Show;
 }
 
 const initialAppState: SeriesState = {
   series: [],
   filteredDates: [],
   currentFilterDate: undefined,
-  currentGenre: undefined
+  currentGenre: undefined,
+  show: undefined
 };
 
 const reducer = createReducer(initialAppState,
@@ -28,19 +31,26 @@ const reducer = createReducer(initialAppState,
   on(changeCurrentFilterDate, (state, {date}) => {
     return {
       ...state,
-      currentFilterDate: date
+      currentFilterDate: date,
+      currentGenre: null
     };
   }),
   on(addNewFilterDate, (state, {date}) => {
     return {
       ...state,
       filteredDates: [...state.filteredDates, date],
-    }
+    };
   }),
   on(changeGenreFilter, (state, {genre}) => {
     return {
       ...state,
       currentGenre: genre
+    };
+  }),
+  on(fetchShowSuccess, (state, {show}) => {
+    return {
+      ...state,
+      show
     };
   })
 );
